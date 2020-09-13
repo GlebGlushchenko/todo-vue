@@ -5,7 +5,9 @@
     <h4>Список задач</h4>
 </div>
     <TaskField @onaddtask="onAddTask" />
+    
 <div class="todo__list">
+  <h3 class="lablel" v-if='!tasks.length' >Нет задач</h3>
     <ListItem v-for="(task,index) in tasks" 
      :key="index" 
     :text="task.text" 
