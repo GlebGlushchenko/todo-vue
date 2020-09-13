@@ -6,7 +6,7 @@
             </svg>
         </div>
             <p>{{text}}</p>
-            <div class="todo__list-item-remove">
+            <div @click="removeTask(index)" class="todo__list-item-remove">
                 <svg height="20px" viewBox="-40 0 427 427.00131" width="20px">
                     <path d="m232.398438 154.703125c-5.523438 0-10 4.476563-10 10v189c0 5.519531 4.476562 10 10 10 5.523437 0 10-4.480469 10-10v-189c0-5.523437-4.476563-10-10-10zm0 0"></path>
                     <path d="m114.398438 154.703125c-5.523438 0-10 4.476563-10 10v189c0 5.519531 4.476562 10 10 10 5.523437 0 10-4.480469 10-10v-189c0-5.523437-4.476563-10-10-10zm0 0"></path>
@@ -29,7 +29,10 @@ export default {
   methods:{
       toggleCompleted(index){
           this.$emit("ontogglecomplited",index)
-      }
+      },
+       removeTask(index){
+            this.$emit('onremovetask',index)
+        }
   }
 }
 </script>

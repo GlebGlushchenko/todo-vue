@@ -35,6 +35,11 @@ body {
   border: 1px solid #ebebeb;
 }
 
+.todo__list{
+  overflow: auto;
+  height: calc(100% - 136px);
+}
+
 .todo__header {
   background-color: #ff4f3e;
   padding: 20px 30px;
@@ -115,6 +120,7 @@ body {
 }
 
 .todo__list-item {
+  
   border-bottom: 1px solid #f4f4f4;
   padding: 20px 20px;
   display: -webkit-box;

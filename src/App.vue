@@ -4,14 +4,16 @@
         <div class="todo__header">
     <h4>Список задач</h4>
 </div>
-    <TaskField />
+    <TaskField @onaddtask="onAddTask" />
 <div class="todo__list">
     <ListItem v-for="(task,index) in tasks" 
      :key="index" 
     :text="task.text" 
     :index="index"
     :completed="task.completed"
-    @ontogglecomplited="onToggleComplited"/>
+    @ontogglecomplited="onToggleComplited"
+    @onremovetask='onRemoveTask'
+    />
     
 </div>
     </div>
@@ -23,11 +25,6 @@ import TaskField from './components/TaskField'
 
 export default {
   name: 'App',
-  methods:{
-    onToggleComplited(index){
-      this.tasks[index].completed =! this.tasks[index].completed
-    }
-  },
   data:()=>({
     tasks:[{ 
       text:"Изучить Vue JS",
@@ -37,10 +34,27 @@ export default {
       completed:false
     }]
   }),
+  methods:{
+    onToggleComplited(index){
+      this.tasks[index].completed =! this.tasks[index].completed
+    },
+    onAddTask(text){
+      this.tasks.push({
+        text,
+        completed:false
+      })
+    },
+
+    onRemoveTask(index){
+      this.tasks.splice(index,1)
+    }
+
+  },
+ 
   components: {
     ListItem,
     TaskField
-  }
+  },
 }
 </script>
 
